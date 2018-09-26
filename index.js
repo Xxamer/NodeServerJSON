@@ -1,11 +1,11 @@
-'use strict' //Para que sea lo más parecido a Java
+'use strict' 
 
-var express = require('express'); //importación de librerías
-var app = express(); //llamamos al método
-var api = express.Router(); //Método dentro de la librería express, sirve para hacer el enrutamiento
+var express = require('express'); //library importation
+var app = express(); //we call the method
+var api = express.Router(); //Method inside the library express, it will do the routing to the petitions
 
 
-var movies = [
+var movies = [ //this is the JSON array
     {
         id:0,
         name: 'Bee Movie',
@@ -52,7 +52,7 @@ const OneMovie = (req, res) => {
 } //Función moderna
 
 const GetMovies = (req, res) => {
-    res.status(200).send(movies); //obtenerlo de una variable
+    res.status(200).send(movies); //This is a request for the server
     return;
 }
 
@@ -66,12 +66,12 @@ const GetSelectedMovie =(req,res) =>{
 
 
 //rutas que puedes modificar
-api.get('/one-movie', OneMovie); //Llamamos a la función que se encargará de cumplir la petición
+api.get('/one-movie', OneMovie); //We call the function that will be responsible of the function calling
 api.get('/all-movies', GetMovies);
 api.get('/movies/:id', GetSelectedMovie);
 
-// /api es una ruta base, se puede cambiar
-app.use('/api', api); //Especificación de la raiz de nuestro servicio web
+// /api is variable, it can be changed
+app.use('/api', api); // especification of the root in our web service
 
 const port = 40000;
 app.listen(port, () => {
